@@ -1,0 +1,21 @@
+#devops
+black
+click 
+pytest
+pytest-cov
+pylint==2.15.3
+
+#rust based linter
+ruff
+boto3
+
+#web
+fastapi
+uvicorn
+
+## data science
+numpy
+pandas
+matplotlib
+seaborn
+polars
