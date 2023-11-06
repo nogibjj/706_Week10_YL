@@ -1,5 +1,4 @@
 import requests
-import pyspark
 from pyspark.sql import SparkSession
 
 def extract(url=" https://github.com/fivethirtyeight/data/blob/15f210532b2a642e85738ddefa7a2945d47e2585/world-cup-predictions/wc-20140609-140000.csv?raw=True",
@@ -34,4 +33,15 @@ def describe(df):
 
 def query(df, name):
     spark = SparkSession.builder.appName("WorldCupPred").getOrCreate()
-    df = 
+    df = df.createOrReplaceTempView(name)
+    res = spark.sql("""SELECT group,
+                    AVG(spi) AS avg_power_per_group,
+                    COUNT(win) AS win_odds,
+                    FROM world_cup_data
+                    GROUP BY group""")
+    
+    return res.show()
+
+def transform(df):
+    USA = df.filter(df["country"] == "USA")
+    return USA.show()

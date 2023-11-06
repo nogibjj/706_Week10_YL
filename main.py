@@ -1,6 +1,14 @@
-def self_add(x, y):
+from mylib.lib import extract, load, describe, query, transform
+from pyspark.sql import SparkSession
 
-    return x+y
+def main():
+    extract()
+    spark = SparkSession.builder.appName("WorldCupPred").getOrCreate()
+    df = load(spark)
+    describe(df)
+    query(df, "world_cup_data")
+    transform(df)
+    spark.stop()
 
 if __name__ == "__main__":
-    self_add(2, 3)
+    main()
