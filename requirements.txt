@@ -14,8 +14,6 @@ fastapi
 uvicorn
 
 ## data science
-numpy
-pandas
-matplotlib
-seaborn
-polars
+pyspark
+requests
+tabulate
