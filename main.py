@@ -1,5 +1,4 @@
 from mylib.lib import extract, load, describe, query, transform, start_spark, end_spark
-from pyspark.sql import SparkSession
 
 def main():
     extract()
