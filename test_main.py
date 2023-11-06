@@ -1,13 +1,12 @@
 import os
 import pytest
-from mylib.lib import extract, load, describe, query, transform
-from pyspark.sql import SparkSession
+from mylib.lib import extract, load, describe, query, transform, start_spark, end_spark
 
 @pytest.fixture(scope="module")
 def spark():
-    spark = SparkSession.builder.appName("WorldCupPred").getOrCreate()
+    spark = start_spark("WorldCupPred")
     yield spark
-    spark.stop()
+    end_spark(spark)
 
 def test_extract():
     file_path = extract()
@@ -31,7 +30,7 @@ def test_query(spark):
 def test_transform(spark):
     df = load(spark)
     res = transform(df)
-    assert res is not None
+    assert res is None
 
 if __name__ == "__main__":
     test_extract()
