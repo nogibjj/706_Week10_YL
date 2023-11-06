@@ -43,7 +43,7 @@ def load(spark, data="data/wc-20140609-140000.csv"):
 
 def query(spark, df, name="world_cup_data"):
     df = df.createOrReplaceTempView(name)
-    res = spark.sql("SELECT country, AVG(spi) AS avg_power_per_group, COUNT(win) AS win_odds FROM world_cup_data GROUP BY group")
+    res = spark.sql("SELECT group, AVG(spi) AS avg_power_per_group, COUNT(win) AS win_odds FROM world_cup_data GROUP BY group")
     
     return res.show()
 
