@@ -4,7 +4,7 @@ from mylib.lib import extract, load, query, transform, start_spark, end_spark
 
 @pytest.fixture(scope="module")
 def spark():
-    spark = start_spark("testApp")
+    spark = start_spark("WorldCupPred")
     yield spark
     end_spark(spark)
 
