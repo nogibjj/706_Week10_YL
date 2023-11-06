@@ -1,5 +1,6 @@
 import requests
 from pyspark.sql import SparkSession
+from pyspark.sql.types import StructField, StructType, StringType, FloatType
 
 def extract(url=" https://github.com/fivethirtyeight/data/blob/15f210532b2a642e85738ddefa7a2945d47e2585/world-cup-predictions/wc-20140609-140000.csv?raw=True",
             file_path="wc-20140609-140000.csv"):
