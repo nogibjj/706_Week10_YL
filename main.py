@@ -5,7 +5,7 @@ def main():
     spark = start_spark("WorldCupPred")
     df = load(spark)
     describe(df)
-    query(df, "world_cup_data")
+    query(spark, df)
     transform(df)
     end_spark(spark)
 

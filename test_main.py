@@ -4,7 +4,7 @@ from mylib.lib import extract, load, describe, query, transform, start_spark, en
 
 @pytest.fixture(scope="module")
 def spark():
-    spark = start_spark("WorldCupPred")
+    spark = start_spark("testApp")
     yield spark
     end_spark(spark)
 
@@ -23,8 +23,7 @@ def test_describe(spark):
 
 def test_query(spark):
     df = load(spark)
-    name = "world_cup_data"
-    res = query(df, name)
+    res = query(spark, df)
     assert res is None
 
 def test_transform(spark):
