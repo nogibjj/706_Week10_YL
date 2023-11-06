@@ -22,7 +22,7 @@ def extract(url=" https://github.com/fivethirtyeight/data/blob/15f210532b2a642e8
     
     return file_path
 
-def load(spark, data="wc-20140609-140000.csv"):
+def load(spark, data="data/wc-20140609-140000.csv"):
     schema = StructType([
         StructField("country", StringType(), True),
         StructField("country_id", StringType(), True),
