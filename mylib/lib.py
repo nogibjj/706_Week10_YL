@@ -29,7 +29,7 @@ def load(spark, data="wc-20140609-140000.csv", name="WorldCupPred"):
         StructField("cup", FloatType(), True),
         StructField("win", FloatType(), True)
     ])
-    df = spark.read.option("header", "true").schema(schema).ccv(data)
+    df = spark.read.option("header", "true").schema(schema).csv(data)
 
     return df
 
